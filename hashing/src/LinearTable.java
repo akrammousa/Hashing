@@ -55,4 +55,19 @@ public class LinearTable {
             }
         }
     }
+
+    public boolean search(int key) {
+        int index= h.getIndexOfKey(key);
+        if (index < hashedKeys.length &&hashedKeys[index]!=null ){
+            if (hashedKeys[index].key == key){
+                return true;
+            }
+            else if(hashedKeys[index].elements.size()!=0){
+                if (hashedKeys[index].quadraticTable.search(key)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

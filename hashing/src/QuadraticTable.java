@@ -27,4 +27,14 @@ public class QuadraticTable {
         }
     }
 
+    public boolean search (int key){
+        int index= h.getIndexOfKey(key);
+        if (index < hashedkeys.length &&hashedkeys[index]!=null ){
+            if (hashedkeys[index].key == key){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
