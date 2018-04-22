@@ -10,6 +10,7 @@ public class MatrixMethod {
         k = new int[32][1];
         fillZeros(k);
         this.b = (int) Math.ceil(Math.log(m));
+        randomizeHashFunction();
 
     }
 
