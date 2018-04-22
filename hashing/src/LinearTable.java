@@ -9,16 +9,16 @@ public class LinearTable {
         h = new MatrixMethod(m);
     }
 
-    public void addKey(int[] keys) {
+    public void addKey(Object[] keys) {
         for (int i = 0; i < keys.length; i++) {
-            int index = h.getIndexOfKey(keys[i]);
+            int index = h.getIndexOfKey((int) keys[i]);
             if (hashedKeys[index] == null) {
                 LinearNode node = new LinearNode();
-                node.key = keys[i];
+                node.key = (int) keys[i];
                 node.index = index;
                 hashedKeys[index] = node;
             } else {
-                hashedKeys[index].elements.add(keys[i]);
+                hashedKeys[index].elements.add((int) keys[i]);
             }
         }
         if (checkLevelTwoCondition()){
@@ -41,8 +41,9 @@ public class LinearTable {
             }
 
         }
-        if (sum <= 4 * m)
-            return true;
+        if (sum <= 4 * m) {
+	    return true;
+	}
         return false;
     }
     private void makeLevelTwo() {

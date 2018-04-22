@@ -19,9 +19,9 @@ public class QuadraticTable {
                 hashedkeys[index] = node;
             }
             else{
-                h.randomizeHashFunction();
+                this.h = new MatrixMethod(m);
                 hashedkeys = new QuadraticNode[m];
-                i=0;
+                i=-1;
             }
         }
     }

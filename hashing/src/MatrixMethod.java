@@ -11,14 +11,13 @@ public class MatrixMethod {
         fillZeros(k);
         this.b = (int) Math.ceil(Math.log(m));
         randomizeHashFunction();
-
     }
 
     public void randomizeHashFunction() {
         Random randomGenerator = new Random();
         for (int i = 0; i < b; i++) {
             for (int j = 0; j < 32; j++) {
-                int randomInt = randomGenerator.nextInt(1);
+                int randomInt = randomGenerator.nextInt(2);
                 h[i][j] = randomInt;
             }
         }
@@ -33,14 +32,15 @@ public class MatrixMethod {
         int size = binaryRepres.length();
 
         for (int i = size - 1; i >= 0; i--) {
-            k[j][0] = binaryRepres.indexOf(i);
+            String s = String.valueOf(binaryRepres.charAt(i));
+            k[j][0] = Integer.parseInt(s);
             j--;
         }
 
         ans = multiplyMatricies(h, k);
 
-        for (int i = b - 1; i >= 0; i--) {
-            index = ans[i] + index;
+        for (int i = 0; i < b; i++) {
+            index += String.valueOf(ans[i][0]);
         }
 
         indexInt = Integer.parseInt(index, 2);
@@ -54,10 +54,10 @@ public class MatrixMethod {
         int counter = 0;
         for (int i = 0; i < b; i++) {
             ans = 0;
-            for (int j = 0; j < 31; j++) {
+            for (int j = 0; j < 32; j++) {
                 ans = ans + h[i][j] * k[j][0];
             }
-            answer[counter][0] = ans;
+            answer[counter][0] = ans % 2;
             counter++;
         }
         return answer;
