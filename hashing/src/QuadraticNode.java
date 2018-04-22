@@ -1,4 +1,4 @@
 public class QuadraticNode {
-    int value;
+    int index;
     int key;
 }

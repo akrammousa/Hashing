@@ -6,6 +6,7 @@ public class MatrixMethod {
     public MatrixMethod (int m ){
         h = new int[(int) Math.ceil(Math.log(m))][32];
         this.b = (int) Math.ceil(Math.log(m));
+        randomizeHashFunction();
     }
 
     public void randomizeHashFunction(){
