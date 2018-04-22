@@ -6,10 +6,13 @@ public class MatrixMethod {
     int b;
 
     public MatrixMethod(int m) {
-        h = new int[(int) Math.ceil(Math.log(m))][32];
+        this.b = (int) Math.ceil(Math.log(m));
+        if(this.b == 0) {
+            this.b = 1;
+        }
+        h = new int[b][32];
         k = new int[32][1];
         fillZeros(k);
-        this.b = (int) Math.ceil(Math.log(m));
         randomizeHashFunction();
     }
 
@@ -24,13 +27,16 @@ public class MatrixMethod {
     }
 
     public int getIndexOfKey(int key) {
+        if(b==1) {
+            return 0;
+        }
         String index = "";
         String binaryRepres = Integer.toBinaryString(key);
         int indexInt = 0;
         int[][] ans = new int[b][1];
         int j = 31;
         int size = binaryRepres.length();
-
+        fillZeros(k);
         for (int i = size - 1; i >= 0; i--) {
             String s = String.valueOf(binaryRepres.charAt(i));
             k[j][0] = Integer.parseInt(s);
