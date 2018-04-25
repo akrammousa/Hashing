@@ -13,7 +13,7 @@ public class ProjectMain {
     public static void main(String[] args) throws NumberFormatException, IOException {
 	// TODO Auto-generated method stub
 	Scanner s = new Scanner(System.in);
-	System.out.println("Welcome, please Enter the file name");
+	System.out.println("Welcome, please Enter the file name .. ex: 'test.txt'");
 	String fileName = s.nextLine();
 	File f = new File(fileName);
 	ArrayList<Object> keyss = new ArrayList<Object>();
