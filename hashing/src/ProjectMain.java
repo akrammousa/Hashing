@@ -4,7 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -16,17 +18,21 @@ public class ProjectMain {
 	System.out.println("Welcome, please Enter the file name .. ex: 'test.txt'");
 	String fileName = s.nextLine();
 	File f = new File(fileName);
-	ArrayList<Object> keyss = new ArrayList<Object>();
+	String line = "";
 	try {
-	    String line;
+	    
 	    BufferedReader br = new BufferedReader(new FileReader(f));
-	    while ((line = br.readLine()) != null) {
-		keyss.add(Integer.valueOf(line));
-	    }
+	    line = br.readLine();
 	} catch (FileNotFoundException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
+	List<String> keysss = Arrays.asList(line.split("\\s*,\\s*"));
+	ArrayList<Object> keyss = new ArrayList<Object>();
+	for(int i = 0; i < keysss.size(); i++) {
+	    keyss.add(Integer.valueOf(keysss.get(i)));
+	}
+	
 	Object[] keys = keyss.toArray();
 	Set<Object> set = new HashSet<Object>();
 	for (Object num : keys) {
